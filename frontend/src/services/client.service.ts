@@ -31,6 +31,13 @@ export async function fetchClients(
   return apiRequest<ClientDto[]>(`/api/clients${query}`, { token });
 }
 
+export async function getClientById(
+  id: string,
+  token: string,
+): Promise<OrchestrationResult<ClientDto>> {
+  return apiRequest<ClientDto>(`/api/clients/${id}`, { token });
+}
+
 export interface CreateClientPayload {
   name: string;
   phone: string;
@@ -47,6 +54,32 @@ export async function createClient(
   return apiRequest<ClientDto>("/api/clients", {
     method: "POST",
     body: client,
+    token,
+  });
+}
+
+export type UpdateClientPayload = Partial<
+  Omit<CreateClientPayload, "cniNumber">
+>;
+
+export async function updateClient(
+  id: string,
+  client: UpdateClientPayload,
+  token: string,
+): Promise<OrchestrationResult<ClientDto>> {
+  return apiRequest<ClientDto>(`/api/clients/${id}`, {
+    method: "PUT",
+    body: client,
+    token,
+  });
+}
+
+export async function deleteClient(
+  id: string,
+  token: string,
+): Promise<OrchestrationResult<ClientDto>> {
+  return apiRequest<ClientDto>(`/api/clients/${id}`, {
+    method: "DELETE",
     token,
   });
 }

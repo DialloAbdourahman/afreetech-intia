@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import cors, { CorsOptions } from "cors";
 import authRouter from "./routes/auth.routes";
 import clientRouter from "./routes/client.route";
+import statsRouter from "./routes/stats.router";
+import assurancesRouter from "./routes/assurances.routes";
 
 const app = express();
 
@@ -45,5 +47,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/clients", clientRouter);
+app.use("/api/stats", statsRouter);
+app.use("/api/assurances", assurancesRouter);
 
 export default app;

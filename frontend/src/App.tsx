@@ -5,6 +5,8 @@ import { fetchCurrentAdmin } from "./store/authSlice";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
+import ClientsPage from "./pages/ClientsPage";
+import ClientDetailsPage from "./pages/ClientDetailsPage";
 
 interface ProtectedRouteProps {
   children: React.ReactElement;
@@ -45,6 +47,22 @@ const App: React.FC = () => {
         element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/clients"
+        element={
+          <ProtectedRoute>
+            <ClientsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/clients/:id"
+        element={
+          <ProtectedRoute>
+            <ClientDetailsPage />
           </ProtectedRoute>
         }
       />
