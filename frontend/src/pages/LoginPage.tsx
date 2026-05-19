@@ -26,8 +26,8 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <h1>Admin Login</h1>
       <form onSubmit={handleSubmit} className="auth-form">
+        <h1 className="auth-title">Admin Login</h1>
         <label>
           Email
           <input name="email" type="email" required />

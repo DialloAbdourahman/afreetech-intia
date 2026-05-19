@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/home/diallo/Desktop/Doc-INTIA/backend/logs/debug/.53605bd12524bc4c651263a3a69e4adf9cc0caad-audit.json",
+    "files": [
+        {
+            "date": 1779195608706,
+            "name": "/home/diallo/Desktop/Doc-INTIA/backend/logs/debug/2026-05-19.log",
+            "hash": "5c4cbcea22b5e782ae450f1d7b3d82f54a6859a8c39bcd7cf9071977d171588d"
+        }
+    ],
+    "hashType": "sha256"
+}
