@@ -1,6 +1,6 @@
 import React, { useEffect, useState, FormEvent } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import SidebarLayout from "../components/SidebarLayout";
 import { useAppSelector } from "../store/hooks";
 import { getClientById, type ClientDto } from "../services/client.service";
 import {
@@ -219,8 +219,7 @@ const ClientDetailsPage: React.FC = () => {
   }
 
   return (
-    <>
-      <Navbar />
+    <SidebarLayout>
       <div className="dashboard-container">
         <div className="dashboard-inner">
           {loading && <p>Loading client...</p>}
@@ -228,24 +227,34 @@ const ClientDetailsPage: React.FC = () => {
           {client && (
             <>
               <h1>Client details</h1>
-              <p>
-                <strong>Name:</strong> {client.name}
-              </p>
-              <p>
-                <strong>Phone:</strong> {client.phone}
-              </p>
-              <p>
-                <strong>Email:</strong> {client.email}
-              </p>
-              <p>
-                <strong>Address:</strong> {client.address}
-              </p>
-              <p>
-                <strong>CNI:</strong> {client.cniNumber}
-              </p>
-              <p>
-                <strong>Branch:</strong> {client.branch}
-              </p>
+              <div className="detail-section">
+                <div className="detail-grid">
+                  <div className="detail-item">
+                    <div className="detail-item-label">Name</div>
+                    <div className="detail-item-value">{client.name}</div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-item-label">Phone</div>
+                    <div className="detail-item-value">{client.phone}</div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-item-label">Email</div>
+                    <div className="detail-item-value">{client.email}</div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-item-label">Address</div>
+                    <div className="detail-item-value">{client.address}</div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-item-label">CNI</div>
+                    <div className="detail-item-value">{client.cniNumber}</div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-item-label">Branch</div>
+                    <div className="detail-item-value">{client.branch}</div>
+                  </div>
+                </div>
+              </div>
             </>
           )}
           {!loading && !client && !error && <p>No client found.</p>}
@@ -286,18 +295,30 @@ const ClientDetailsPage: React.FC = () => {
                       <td>{assurance.endDate.slice(0, 10)}</td>
                       <td>{assurance.amount}</td>
                       <td>{assurance.status}</td>
-                      <td>
+                      <td className="table-actions">
                         <button
                           type="button"
+                          className="action-button action-button--edit"
                           onClick={() => startEditAssurance(assurance)}
                         >
-                          Edit
+                          <span className="action-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                              <path d="M4 17.25V20h2.75L17.81 8.94l-2.75-2.75L4 17.25Zm13.71-9.46a1 1 0 0 0 0-1.41l-1.59-1.59a1 1 0 0 0-1.41 0l-1.13 1.13 2.75 2.75 1.38-1.38Z" />
+                            </svg>
+                          </span>
+                          <span>Edit</span>
                         </button>
                         <button
                           type="button"
+                          className="action-button action-button--delete"
                           onClick={() => handleAssuranceDelete(assurance._id)}
                         >
-                          Delete
+                          <span className="action-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                              <path d="M9 3h6l1 2h4v2H4V5h4l1-2Zm1 6h2v8h-2V9Zm4 0h2v8h-2V9Z" />
+                            </svg>
+                          </span>
+                          <span>Delete</span>
                         </button>
                       </td>
                     </tr>
@@ -410,7 +431,7 @@ const ClientDetailsPage: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </SidebarLayout>
   );
 };
 

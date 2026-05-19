@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import ClientsPage from "./pages/ClientsPage";
 import ClientDetailsPage from "./pages/ClientDetailsPage";
+import AssurancesPage from "./pages/AssurancesPage";
 
 interface ProtectedRouteProps {
   children: React.ReactElement;
@@ -63,6 +64,14 @@ const App: React.FC = () => {
         element={
           <ProtectedRoute>
             <ClientDetailsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/assurances"
+        element={
+          <ProtectedRoute>
+            <AssurancesPage />
           </ProtectedRoute>
         }
       />

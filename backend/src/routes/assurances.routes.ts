@@ -117,7 +117,9 @@ assurancesRouter.get(
       }
 
       const assurances = await Insurance.find(filter)
+        .populate("client", "name email")
         .sort({ createdAt: -1 })
+        .lean()
         .exec();
 
       const result = OrchestrationResult.Success({

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
 import { getStats } from "../services/stats.service";
 import type { StatsDto } from "../types/stats";
-import Navbar from "../components/Navbar";
+import SidebarLayout from "../components/SidebarLayout";
 
 const DashboardPage: React.FC = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -40,8 +40,7 @@ const DashboardPage: React.FC = () => {
   }, [auth.token]);
 
   return (
-    <>
-      <Navbar />
+    <SidebarLayout>
       <div className="dashboard-container">
         <div className="dashboard-inner">
           <h1>Dashboard</h1>
@@ -70,8 +69,7 @@ const DashboardPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </SidebarLayout>
   );
 };
-
 export default DashboardPage;

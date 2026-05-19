@@ -28,7 +28,7 @@
 
 .dashboard-inner {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1280px;
   background: #ffffff;
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -37,6 +37,95 @@
   text-align: left;
   box-sizing: border-box;
   margin: 0 auto;
+}
+
+/* App shell with sidebar */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--accent);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: auto;
+}
+
+.sidebar-nav-button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar-nav-button.active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.sidebar-nav-button.disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.sidebar-footer {
+  margin-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 16px;
+}
+
+.sidebar-user {
+  margin-bottom: 8px;
+}
+
+.sidebar-user-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sidebar-user-email {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.sidebar-logout {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.app-content {
+  flex: 1;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .auth-title,
@@ -182,6 +271,92 @@
   font-size: 20px;
   font-weight: 600;
   color: var(--text-h);
+}
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 24px;
+  margin-top: 8px;
+}
+
+.detail-item-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.detail-item-value {
+  font-size: 15px;
+  color: var(--text-h);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #f9fafb;
+}
+
+.table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.table-actions {
+  white-space: nowrap;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.action-button--view {
+  border-color: var(--border);
+}
+
+.action-button--edit {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.action-button--delete {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.action-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 .modal-backdrop {

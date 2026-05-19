@@ -1,6 +1,6 @@
 import React, { useEffect, useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import SidebarLayout from "../components/SidebarLayout";
 import { useAppSelector } from "../store/hooks";
 import { getAssuranceCountForClient } from "../services/assurance.service";
 import {
@@ -181,8 +181,7 @@ const ClientsPage: React.FC = () => {
   }
 
   return (
-    <>
-      <Navbar />
+    <SidebarLayout>
       <div className="dashboard-container">
         <div className="dashboard-inner">
           <h1>Clients</h1>
@@ -252,21 +251,42 @@ const ClientsPage: React.FC = () => {
                         ? "--"
                         : assuranceCounts[client._id]}
                     </td>
-                    <td>
+                    <td className="table-actions">
                       <button
                         type="button"
+                        className="action-button action-button--view"
                         onClick={() => navigate(`/clients/${client._id}`)}
                       >
-                        View details
-                      </button>
-                      <button type="button" onClick={() => handleEdit(client)}>
-                        Edit
+                        <span className="action-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M12 5C7 5 3.1 8.1 2 12c1.1 3.9 5 7 10 7s8.9-3.1 10-7c-1.1-3.9-5-7-10-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z" />
+                          </svg>
+                        </span>
+                        <span>View</span>
                       </button>
                       <button
                         type="button"
+                        className="action-button action-button--edit"
+                        onClick={() => handleEdit(client)}
+                      >
+                        <span className="action-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M4 17.25V20h2.75L17.81 8.94l-2.75-2.75L4 17.25Zm13.71-9.46a1 1 0 0 0 0-1.41l-1.59-1.59a1 1 0 0 0-1.41 0l-1.13 1.13 2.75 2.75 1.38-1.38Z" />
+                          </svg>
+                        </span>
+                        <span>Edit</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="action-button action-button--delete"
                         onClick={() => handleDelete(client._id)}
                       >
-                        Delete
+                        <span className="action-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24">
+                            <path d="M9 3h6l1 2h4v2H4V5h4l1-2Zm1 6h2v8h-2V9Zm4 0h2v8h-2V9Z" />
+                          </svg>
+                        </span>
+                        <span>Delete</span>
                       </button>
                     </td>
                   </tr>
@@ -376,7 +396,7 @@ const ClientsPage: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </SidebarLayout>
   );
 };
 

@@ -3,9 +3,15 @@ import type { OrchestrationResult } from "../types/orchestration";
 
 export type AssuranceStatus = "active" | "expired";
 
+export interface AssuranceClientRef {
+  _id: string;
+  name: string;
+  email: string;
+}
+
 export interface AssuranceDto {
   _id: string;
-  client: string;
+  client: AssuranceClientRef;
   type: string;
   policyNumber: string;
   startDate: string;
